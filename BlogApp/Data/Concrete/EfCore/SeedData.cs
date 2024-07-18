@@ -1,8 +1,7 @@
-﻿using BlogApp.Data.Concrete.EfCore;
-using BlogApp.Entitiy;
+﻿using BlogApp.Entitiy;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlogApp.Data.Concrete
+namespace BlogApp.Data.Concrete.EfCore
 {
     public static class SeedData
     {

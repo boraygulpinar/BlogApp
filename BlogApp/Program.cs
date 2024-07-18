@@ -1,4 +1,4 @@
-using BlogApp.Data.Concrete;
+using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete.EfCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +13,8 @@ builder.Services.AddDbContext<BlogContext>(options =>
     var connectionString = config.GetConnectionString("sql_connection");
     options.UseSqlite(connectionString);
 });
+
+builder.Services.AddScoped<IPostRepository, EfPostRepository>();
 
 var app = builder.Build();
 
