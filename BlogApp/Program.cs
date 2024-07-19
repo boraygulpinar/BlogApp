@@ -18,6 +18,8 @@ builder.Services.AddScoped<IPostRepository, EfPostRepository>();
 
 var app = builder.Build();
 
+app.UseStaticFiles();
+
 SeedData.TestVerileriniDoldur(app);
 
 // Configure the HTTP request pipeline.
