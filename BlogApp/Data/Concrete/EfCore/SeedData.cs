@@ -19,11 +19,11 @@ namespace BlogApp.Data.Concrete.EfCore
                 if (!context.Tags.Any())
                 {
                     context.Tags.AddRange(
-                        new Tag { Text = "Web Programlama", URL = "web-programlama" },
-                        new Tag { Text = "Backend", URL = "backend" },
-                        new Tag { Text = "Frontend", URL = "frontend" },
-                        new Tag { Text = "Fullstack", URL = "fullstack" },
-                        new Tag { Text = "Php", URL = "php" }
+                        new Tag { Text = "Web Programlama", URL = "web-programlama", Color = TagColors.warning },
+                        new Tag { Text = "Backend", URL = "backend", Color = TagColors.success },
+                        new Tag { Text = "Frontend", URL = "frontend", Color = TagColors.secondary },
+                        new Tag { Text = "Fullstack", URL = "fullstack", Color = TagColors.primary },
+                        new Tag { Text = "Php", URL = "php", Color = TagColors.info }
                     );
                     context.SaveChanges();
                 }
@@ -31,8 +31,8 @@ namespace BlogApp.Data.Concrete.EfCore
                 if (!context.Users.Any())
                 {
                     context.Users.AddRange(
-                        new User { UserName = "BorayGulpinar" },
-                        new User { UserName = "KemalCinar" }
+                        new User { UserName = "BorayGulpinar", Image = "p1.jpg" },
+                        new User { UserName = "KemalCinar", Image = "p2.jpg" }
                         );
                     context.SaveChanges();
                 }
@@ -49,7 +49,12 @@ namespace BlogApp.Data.Concrete.EfCore
                             PublishedOn = DateTime.Now.AddDays(-10),
                             Tags = context.Tags.Take(3).ToList(),
                             Image = "1.jpg",
-                            UserID = 1
+                            UserID = 1,
+                            Comments = new List<Comment> {
+                                new Comment { CommentText ="İyi bir kurs." , PublishedOn= new DateTime(),UserID=1},
+                                new Comment { CommentText ="Çok faydalandığım bir kurs." , PublishedOn= new DateTime(),UserID=2},
+
+                            }
                         },
                         new Post
                         {
