@@ -38,8 +38,24 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
+//localhost://posts/web-programlama
+app.MapControllerRoute(
+    name: "post_details",
+    pattern: "posts/{url}",
+    defaults: new {controller = "Posts", action = "Details"}
+    );
+
+
+//localhost://posts/tag/web-programlama
+app.MapControllerRoute(
+    name: "posts_by_tag",
+    pattern: "posts/tag/{tag}",
+    defaults: new { controller = "Posts", action = "Index" }
+    );
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=posts}/{action=Index}/{id?}");
 
 app.Run();

@@ -1,6 +1,5 @@
 ﻿@model PostWithTagViewModel
 
-
 @{
     ViewData["Title"] = "Index";
 }
@@ -17,7 +16,7 @@
                             <img src="~/img/@item.Image" class="img-fluid rounded" alt="Image"></img>
                         </div>
                         <div class="col-8">
-                            <h5><a href="#" class="btn-link fw-bold">@item.Title</a></h5>
+                            <h5><a href="/posts/@item.URL" class="btn-link fw-bold">@item.Title</a></h5>
                             <p>@item.Content</p>
                             <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2 fw-bold">Web Development</a>
                         </div>
@@ -36,6 +35,7 @@
     </div>
     <div class="col-lg-4">
         <vc:tags-menu></vc:tags-menu>
+        <vc:new-posts></vc:new-posts>
     </div>
 </div>
 
