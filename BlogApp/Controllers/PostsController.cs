@@ -39,7 +39,7 @@ namespace BlogApp.Controllers
                 .FirstOrDefaultAsync(p => p.URL == url));
         }
 
-        public IActionResult AddComment(int PostID, string UserName, string CommentText, string Url)
+        public JsonResult AddComment(int PostID, string UserName, string CommentText)
         {
             var entity = new Comment
             {
@@ -49,7 +49,14 @@ namespace BlogApp.Controllers
                 User = new User { UserName = UserName, Image = "avatar.jpg" }                
             };
             _commentRepository.CreateComment(entity);
-            return Redirect("/posts/details/" + Url);
+
+            return Json(new
+            {
+                UserName,
+                CommentText,
+                entity.PublishedOn,
+                entity.User.Image
+            });
         }
     }
 }
