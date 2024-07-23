@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using BlogApp.Models;
 using Microsoft.EntityFrameworkCore;
 using BlogApp.Entitiy;
+using System.Security.Claims;
 
 namespace BlogApp.Controllers
 {
@@ -40,23 +41,28 @@ namespace BlogApp.Controllers
                 .FirstOrDefaultAsync(p => p.URL == url));
         }
 
-        public JsonResult AddComment(int PostID, string UserName, string CommentText)
+        [HttpPost]
+        public JsonResult AddComment(int PostID, string CommentText)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var username = User.FindFirstValue(ClaimTypes.Name);
+            var avatar = User.FindFirstValue(ClaimTypes.UserData);
+
             var entity = new Comment
             {
+                PostID = PostID,
                 CommentText = CommentText,
                 PublishedOn = DateTime.Now,
-                PostID = PostID,
-                User = new User { UserName = UserName, Image = "avatar.jpg" }                
+                UserID = int.Parse(userId ?? "")
             };
             _commentRepository.CreateComment(entity);
 
             return Json(new
             {
-                UserName,
+                username,
                 CommentText,
                 entity.PublishedOn,
-                entity.User.Image
+                avatar
             });
         }
     }
