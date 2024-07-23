@@ -18,6 +18,10 @@ namespace BlogApp.Controllers
 
         public IActionResult Login()
         {
+            if (User.Identity!.IsAuthenticated)
+            {
+                return RedirectToAction("Index","Posts");
+            }
             return View();
         }
 
@@ -53,7 +57,7 @@ namespace BlogApp.Controllers
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity), authPropertise
                         );
-                    return RedirectToAction("Index", "Post");
+                    return RedirectToAction("Index", "Posts");
                 }
                 else
                 {
@@ -63,5 +67,12 @@ namespace BlogApp.Controllers
 
             return View(model);
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
+        }
     }
 }
+
