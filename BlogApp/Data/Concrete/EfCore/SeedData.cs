@@ -43,6 +43,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         new Post
                         {
                             Title = "Asp.Net Core",
+                            Description = "Asp.Net Core Dersleri",
                             Content = "Asp.Net Core Dersleri",
                             URL = "aspnet-core",
                             IsActive = true,
@@ -59,6 +60,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         new Post
                         {
                             Title = "Php",
+                            Description = "Asp.Net Core Dersleri",
                             Content = "Php Dersleri",
                             URL = "php",
                             IsActive = true,
@@ -70,6 +72,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         new Post
                         {
                             Title = "Django",
+                            Description = "Asp.Net Core Dersleri",
                             Content = "Django Dersleri",
                             URL = "django",
                             IsActive = true,
@@ -81,6 +84,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         new Post
                         {
                             Title = "React",
+                            Description = "Asp.Net Core Dersleri",
                             Content = "React Dersleri",
                             URL = "react-dersleri",
                             IsActive = true,
@@ -92,6 +96,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         new Post
                         {
                             Title = "Angular",
+                            Description = "Asp.Net Core Dersleri",
                             Content = "Angular Dersleri",
                             URL = "angular",
                             IsActive = true,
@@ -103,6 +108,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         new Post
                         {
                             Title = "Web Tasarım",
+                            Description = "Asp.Net Core Dersleri",
                             Content = "Web Tasarım Dersleri",
                             URL = "web-tasarim",
                             IsActive = true,
