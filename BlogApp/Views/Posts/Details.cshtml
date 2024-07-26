@@ -16,6 +16,10 @@
                 }
             </div>
             <img src="~/img/@Model.Image" class="img-fluid rounded" alt="Image"></img>
+            <ul class="list-inline my-3">
+                <li class="list-inline-item"><i class="bi bi-calendar"></i>@Model.PublishedOn.ToString("d")</li>
+                <li class="list-inline-item"><i class="bi bi-person-circle"></i><a href="/profile/@Model.User.UserName"> @Model.User.Name</a></li>
+            </ul>
             <div>@Html.Raw(@Model.Content)</div>
         </div>
         <div class="bg-white mt-3">
@@ -25,19 +29,21 @@
                 </div>
                 <div class="card-body">
                     <div id="comments">
-                    @foreach (var item in Model.Comments)
-                    {
-                        <div class="my-4 d-flex">
-                            <img src="/img/@item.User.Image" alt="" class="avatar rounded-circle float-start me-3" />
-                            <div>
-                                <div class="mb-2">
-                                    <h6 class="me-2">@item.User.UserName</h6>
-                                    <small>@item.PublishedOn.ToString("d")</small>
+                        @foreach (var item in Model.Comments)
+                        {
+                            <div class="my-4 d-flex">
+                                <img src="/img/@item.User.Image" alt="" class="avatar rounded-circle float-start me-3" />
+                                <div>
+                                    <div class="mb-2">
+                                        <h6 class="me-2">
+                                            <a href="/profile/@item.User.UserName">@item.User.UserName</a>
+                                        </h6>
+                                        <small>@item.PublishedOn.ToString("d")</small>
+                                    </div>
+                                    <p>@item.CommentText</p>
                                 </div>
-                                <p>@item.CommentText</p>
                             </div>
-                        </div>
-                    }
+                        }
                     </div>
 
                     @if (User.Identity!.IsAuthenticated)
@@ -61,7 +67,7 @@
                     {
                         <p>Yorum yapmak için giriş yapmalısınız. <a href="/users/login/">Login</a></p>
                     }
-                    
+
                 </div>
             </div>
         </div>
@@ -93,17 +99,17 @@
                         var date = new Date(yorum.publishedOn);
 
                         $("#comments").append(`
-                                            <div class="my-4 d-flex">
-                                                <img src="/img/${yorum.avatar}" alt="" class="avatar rounded-circle float-start me-3">
-                                                <div>
-                                                    <div class="mb-2 d-flex">
-                                                        <h6 class="me-2">${yorum.username}</h6>
-                                                        <small>${date.toLocaleDateString()}</small>
+                                                    <div class="my-4 d-flex">
+                                                        <img src="/img/${yorum.avatar}" alt="" class="avatar rounded-circle float-start me-3">
+                                                        <div>
+                                                            <div class="mb-2 d-flex">
+                                                                <h6 class="me-2">${yorum.username}</h6>
+                                                                <small>${date.toLocaleDateString()}</small>
+                                                            </div>
+                                                            <p>${yorum.commentText}</p>
+                                                        </div>
                                                     </div>
-                                                    <p>${yorum.commentText}</p>
-                                                </div>
-                                            </div>
-                                        `);
+                                                `);
 
                         $("#UserName").val('');
                         $("#CommentText").val('');
