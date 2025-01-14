@@ -5,7 +5,7 @@
   <br>
 </h1>
 
-<h4 align="center">Asp.Net Core kullanılarak geliştirilen Blog Projesi</h4>
+<h4 align="center">.NET Core kullanılarak geliştirilen Blog Projesi</h4>
 
 <p align="center">
   <a href="#hakkında">Hakkında</a> •
